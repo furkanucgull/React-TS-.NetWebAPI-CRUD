@@ -1,3 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using MovieApp.Infrastructure;
+using MovieApp.Application;
+using MovieApp.Server.Modules;
+using System.Reflection;
+using MovieApp.Application.Mapping;
 
 namespace MovieApp.Server
 {
@@ -8,16 +14,19 @@ namespace MovieApp.Server
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            var app = builder.Build();
+            // Register DbContext
+            builder.Services.AddDbContext<MoviesDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DbConnectionString")));
 
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
+            // Add Application services and MediatR
+            builder.Services.AddApplication();
+            //MappingConfig.Configure();
+
+            var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -27,12 +36,12 @@ namespace MovieApp.Server
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
 
+            // Custom endpoints configuration
+            app.AddMoviesEndpoints();
 
             app.MapControllers();
-
             app.MapFallbackToFile("/index.html");
 
             app.Run();
