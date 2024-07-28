@@ -15,6 +15,16 @@ namespace MovieApp.Server
 
             // Add services to the container.
             builder.Services.AddControllers();
+            // Add CORS policy
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
+            });
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -35,9 +45,9 @@ namespace MovieApp.Server
                 app.UseSwaggerUI();
             }
 
+            app.UseCors();
             app.UseHttpsRedirection();
             app.UseAuthorization();
-
             // Custom endpoints configuration
             app.AddMoviesEndpoints();
 
