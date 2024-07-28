@@ -1,14 +1,15 @@
 
 import './App.css';
-import MovieTable from './components/movies/MovieTable';
+import Header from './components/movies/Header';
+import RouterConfig from './router/RouterConfig';
+
 function App() {
 
 
     return (
         <div>
-
-            <MovieTable />
-
+            <Header />
+            <RouterConfig />
         </div>
     );
 
