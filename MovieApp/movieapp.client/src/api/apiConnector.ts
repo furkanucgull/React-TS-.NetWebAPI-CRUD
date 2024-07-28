@@ -9,8 +9,10 @@ const apiConnector = {
       const response: AxiosResponse<GetMoviesResponse> = await axios.get(`${API_BASE_URL}/movies`);
       const movies = response.data.movieDtos.map((movie: MovieDto) => ({
         ...movie,
-        CreateDate: movie.createDate?.slice(0, 10) ?? '',
+
+        createDate: movie.createDate?.slice(0, 10) ?? '',
       }));
+
       return movies;
     } catch (error) {
       console.log('error while fetching', error);
