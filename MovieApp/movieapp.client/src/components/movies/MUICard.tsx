@@ -1,100 +1,40 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
-import Avatar from '@mui/material/Avatar';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { MovieDto } from '../../models/movieDto';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import { MdFavoriteBorder } from "react-icons/md";
+import Typography from '@mui/material/Typography';
 
-
-interface ExpandMoreProps extends IconButtonProps {
-    expand: boolean;
-}
-
-
-const ExpandMore = styled((props: ExpandMoreProps) => {
-    const { expand, ...other } = props;
-    return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-    transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-        duration: theme.transitions.duration.shortest,
-    }),
-}));
 interface Props {
     movie: MovieDto;
 }
+
 function MUICard({ movie }: Props) {
-    const [expanded, setExpanded] = React.useState(false);
-    const { id, title, description, category, createDate } = movie;
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
+    const { id, title, category, createDate } = movie;
 
     return (
-        <Card sx={{ maxWidth: 345 }}>
-            <CardHeader
-                avatar={
-                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                        R
-                    </Avatar>
-                }
-                action={
-                    <IconButton aria-label="settings">
-                        <MoreVertIcon />
-                    </IconButton>
-                }
-                title={title}
-                subheader={createDate}
-            />
-            <CardMedia
-                component="img"
-                height="194"
-                image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwjvtARVQAFZvjgby4i1ev7I2h0OgHcG8YoQ&s"
-                alt="LOTR"
-            />
-            <CardContent>
-                <Typography variant="body2" color="text.secondary">
-                    Short description
-                </Typography>
-            </CardContent>
-            <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                    <ShareIcon />
-                </IconButton>
-                <ExpandMore
-                    expand={expanded}
-                    onClick={handleExpandClick}
-                    aria-expanded={expanded}
-                    aria-label="show more"
-                >
-                    <ExpandMoreIcon />
-                </ExpandMore>
-            </CardActions>
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <CardContent>
-                    <Typography paragraph>About Film:</Typography>
-                    <Typography paragraph>
-                        {description}
-                    </Typography>
+        <div className='!object-contain object-top flex text-center mt-4  flex-nowrap '>
+            <Card
+                className='ml-2'
+                sx={{ width: { xs: 120, sm: 180, md: 240, lg: 300 }, maxWidth: { xs: 120, sm: 180, md: 240, lg: 300 } }}>
+                <CardMedia
 
+                    sx={{ height: { xs: 120, sm: 180, md: 240, lg: 300 }, maxHeight: { xs: 120, sm: 180, md: 240, lg: 300 } }}
+                    image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwjvtARVQAFZvjgby4i1ev7I2h0OgHcG8YoQ&s"
+                />
+                <CardContent className='p-2 sm:p-3'>
+                    <Typography component="div">
+                        <p className='text-[11px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-bold text-blue-600 h-14'>{title}</p>
+                    </Typography>
+                    <p className='text-[11px] mt-2 sm:text-[12px] md:text-[14px] lg:text-[16px] font-serif text-gray-400 text-nowrap'>{createDate?.substring(0, 4)}, {category}</p>
                 </CardContent>
-            </Collapse>
-        </Card>
+                <CardActions className='flex justify-end'>
+                    <MdFavoriteBorder className='text-sm sm:text-base md:text-lg' />
+                </CardActions>
+            </Card>
+        </div >
     );
 }
 
