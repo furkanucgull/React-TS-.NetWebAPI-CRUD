@@ -3,6 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import MovieList from '../components/movies/MovieList';
 import MovieForm from '../components/movies/MovieForm';
 import MovieDetails from '../components/movies/MovieDetails';
+import Login from '../pages/Login';
+import Register from '../pages/Register';
 
 function RouterConfig() {
   return (
@@ -10,6 +12,8 @@ function RouterConfig() {
       <Route path='/' element={<MovieList />} />
       <Route path='/create-movie' element={<MovieForm />} />
       <Route path='/movie-details/:id' element={<MovieDetails />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/register' element={<Register />} />
     </Routes>
 
 
