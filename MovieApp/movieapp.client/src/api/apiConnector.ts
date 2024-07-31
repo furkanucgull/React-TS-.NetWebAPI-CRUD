@@ -35,9 +35,9 @@ const apiConnector = {
       throw error;
     }
   },
-  deleteMovie: async (movieId: number): Promise<void> => {
+  deleteMovie: async (movieId: string): Promise<void> => {
     try {
-      await axios.delete<number>(`${API_BASE_URL}/movies/${movieId}`);
+      await axios.delete<string>(`${API_BASE_URL}/movies/${movieId}`);
     } catch (error) {
       console.log(error);
       throw error;

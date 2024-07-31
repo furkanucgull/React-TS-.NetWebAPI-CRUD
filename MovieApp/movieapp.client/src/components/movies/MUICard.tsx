@@ -7,6 +7,8 @@ import CardMedia from '@mui/material/CardMedia';
 import { MdFavoriteBorder } from "react-icons/md";
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
+import { MdDeleteOutline } from "react-icons/md";
+import apiConnector from '../../api/apiConnector';
 
 interface Props {
     movie: MovieDto;
@@ -15,7 +17,13 @@ interface Props {
 function MUICard({ movie }: Props) {
     const navigate = useNavigate();
     const { id, title, category, createDate } = movie;
-
+    const handleDelete = async () => {
+        const isConfirmed: boolean = window.confirm(`Are you sure want to Delete ${title} movie ?`);
+        if (isConfirmed) {
+            await apiConnector.deleteMovie(id);
+            window.location.reload();
+        }
+    };
     return (
         <div className='!object-contain object-top flex text-center mt-4  flex-nowrap '>
 
@@ -34,6 +42,7 @@ function MUICard({ movie }: Props) {
                 </CardContent>
                 <CardActions className='flex justify-end'>
                     <MdFavoriteBorder className='text-sm sm:text-base md:text-lg cursor-pointer ' />
+                    <MdDeleteOutline onClick={handleDelete} className='cursor-pointer' size={20} color='red' />
                 </CardActions>
             </Card>
         </div >
