@@ -1,11 +1,12 @@
 import { TextField } from "@mui/material";
 import MUISelect from "./MUISelect";
 import { useState } from "react";
-import axios from "axios";
 import apiConnector from "../../api/apiConnector";
+import { useNavigate } from "react-router-dom";
 
 
 export default function MovieForm() {
+    const navigate = useNavigate();
     const [post, SetPost] = useState({
         title: "",
         category: " ",
@@ -19,7 +20,8 @@ export default function MovieForm() {
         e.preventDefault();
         try {
             await apiConnector.createMovie(post);
-            console.log("Movie created successfully");
+            alert("Movie created successfully");
+            navigate("/");
         } catch (error) {
             console.log("Error creating movie:", error);
         }

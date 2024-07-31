@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import { MdDeleteOutline } from "react-icons/md";
 import apiConnector from '../../api/apiConnector';
+import { CiEdit } from "react-icons/ci";
 
 interface Props {
     movie: MovieDto;
@@ -43,6 +44,7 @@ function MUICard({ movie }: Props) {
                 <CardActions className='flex justify-end'>
                     <MdFavoriteBorder className='text-sm sm:text-base md:text-lg cursor-pointer ' />
                     <MdDeleteOutline onClick={handleDelete} className='cursor-pointer' size={20} color='red' />
+                    <CiEdit className='cursor-pointer' size={20} onClick={() => navigate(`/edit-movie/${id}`)} />
                 </CardActions>
             </Card>
         </div >
