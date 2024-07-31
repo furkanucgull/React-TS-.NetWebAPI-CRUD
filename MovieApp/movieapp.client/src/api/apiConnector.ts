@@ -43,10 +43,10 @@ const apiConnector = {
       throw error;
     }
   },
-  getMovieById: async (movieId: number): Promise<MovieDto | undefined> => {
+  getMovieById: async (movieId: string): Promise<MovieDto | undefined> => {
     try {
       const response = await axios.get(`${API_BASE_URL}/movies/${movieId}`);
-      return response.data.MovieDto;
+      return response.data.movieDto;
     } catch (error) {
       console.log(error);
       throw error;
