@@ -16,6 +16,7 @@ function MUICard({ movie }: Props) {
 
     return (
         <div className='!object-contain object-top flex text-center mt-4  flex-nowrap '>
+
             <Card
                 className='ml-2'
                 sx={{ width: { xs: 120, sm: 180, md: 240, lg: 300 }, maxWidth: { xs: 120, sm: 180, md: 240, lg: 300 } }}>
@@ -31,7 +32,7 @@ function MUICard({ movie }: Props) {
                     <p className='text-[11px] mt-2 sm:text-[12px] md:text-[14px] lg:text-[16px] font-serif text-gray-400 text-nowrap'>{createDate?.substring(0, 4)}, {category}</p>
                 </CardContent>
                 <CardActions className='flex justify-end'>
-                    <MdFavoriteBorder className='text-sm sm:text-base md:text-lg' />
+                    <MdFavoriteBorder className='text-sm sm:text-base md:text-lg cursor-pointer ' />
                 </CardActions>
             </Card>
         </div >
