@@ -8,19 +8,18 @@ This project is a full-stack movie website that is currently under development. 
 
 - **Frontend**: React, TypeScript, HTML, CSS, TailwindCSS
 - **Backend**: .NET Core Web API (.NET 8), Entity Framework Core
-- **State Management**: Redux
 - **Routing**: React Router
 - **HTTP Requests**: Axios
 - **Database**: SQL Server
 
 ## Features
 
-- User authentication and registration system (in development).
-- CRUD operations for managing movie data.
-- Responsive and intuitive UI design.
-- Integration of RESTful APIs for seamless frontend-backend communication.
-- Efficient state management with Redux.
-- Secure and scalable backend architecture using .NET Core Web API.
+- **User Authentication and Registration:** Allows users to register and log in (in development).
+- **CRUD Operations for Movie Management:** Create, read, update, and delete movies.
+- **Responsive UI Design:** Built with TailwindCSS for a modern, responsive design.
+- **RESTful API Integration:** Seamless communication between frontend and backend.
+- **Secure Backend Architecture:** Powered by .NET Core Web API and Entity Framework Core.
+- **Dummy Data Handling:** Displays dummy data if no movies are available in the database or if data retrieval fails.
 
 ## Installation
 
@@ -37,8 +36,4 @@ Make sure you have the following installed on your system:
 1. Clone the repository:
    ```bash
    git clone https://github.com/furkanucgull/React-TS-.NetWebAPI-CRUD.git
-cd React-TS-.NetWebAPI-CRUD/frontend
-
-npm install
-
-npn run dev
+   cd React-TS-.NetWebAPI-CRUD/frontend
