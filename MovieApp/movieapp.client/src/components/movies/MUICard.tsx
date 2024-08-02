@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { MdDeleteOutline } from "react-icons/md";
 import apiConnector from '../../api/apiConnector';
 import { CiEdit } from "react-icons/ci";
-
+import { movieData } from "../../data/movieData";
 interface Props {
     movie: MovieDto;
 }

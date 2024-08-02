@@ -9,10 +9,8 @@ const apiConnector = {
       const response: AxiosResponse<GetMoviesResponse> = await axios.get(`${API_BASE_URL}/movies`);
       const movies = response.data.movieDtos.map((movie: MovieDto) => ({
         ...movie,
-
         createDate: movie.createDate?.slice(0, 10) ?? '',
       }));
-
       return movies;
     } catch (error) {
       console.log('error while fetching', error);
@@ -27,9 +25,9 @@ const apiConnector = {
       throw error;
     }
   },
-  editMovie: async (movie: MovieDto): Promise<void> => {
+  editMovie: async (id: string, movie: MovieDto): Promise<void> => {
     try {
-      await axios.put<number>(`${API_BASE_URL}/movies`, movie);
+      await axios.put<number>(`${API_BASE_URL}/movies/${id}`, movie);
     } catch (error) {
       console.log('error', error);
       throw error;
@@ -53,4 +51,5 @@ const apiConnector = {
     }
   },
 };
+
 export default apiConnector;
