@@ -17,7 +17,7 @@ interface Props {
 
 function MUICard({ movie }: Props) {
     const navigate = useNavigate();
-    const { id, title, category, createDate } = movie;
+    const { id, title, category, createDate, imageUrl } = movie;
     const handleDelete = async () => {
         const isConfirmed: boolean = window.confirm(`Are you sure want to Delete ${title} movie ?`);
         if (isConfirmed) {
@@ -33,7 +33,7 @@ function MUICard({ movie }: Props) {
                 sx={{ width: { xs: 120, sm: 180, md: 240, lg: 300 }, maxWidth: { xs: 120, sm: 180, md: 240, lg: 300 } }}>
                 <CardMedia
                     sx={{ height: { xs: 120, sm: 180, md: 240, lg: 300 }, maxHeight: { xs: 120, sm: 180, md: 240, lg: 300 } }}
-                    image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwjvtARVQAFZvjgby4i1ev7I2h0OgHcG8YoQ&s"
+                    image={imageUrl}
                 />
                 <CardContent className='p-2 sm:p-3'>
                     <Typography component="div">

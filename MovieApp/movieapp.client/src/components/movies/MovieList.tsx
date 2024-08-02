@@ -54,7 +54,7 @@ export default function MovieList({ onSearch }) {
                 <SearchComponent onSearch={handleSearch} />
             </div>
 
-            <div className="film-section flex flex-row gap-3 flex-wrap">
+            <div className="film-section flex flex-row gap-3 flex-wrap justify-center">
                 {filteredMovies.map((movie, index) => (
                     <MUICard key={index} movie={movie} />
                 ))}
