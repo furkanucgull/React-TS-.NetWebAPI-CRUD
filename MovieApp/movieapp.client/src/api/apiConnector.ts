@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { MovieDto } from '../models/movieDto';
 import { GetMoviesResponse } from '../models/getMoviesResponse ';
-import { API_BASE_URL } from '../../config';
+import { API_BASE_URL } from '../models/config';
 
 const apiConnector = {
   getMovies: async (): Promise<MovieDto[]> => {

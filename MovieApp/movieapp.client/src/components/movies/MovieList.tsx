@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import MUICard from "./MUICard";
 import SearchComponent from "./SearchComponent";
 
-export default function MovieList({ onSearch }) {
+export default function MovieList() {
     const [movies, setMovies] = useState<MovieDto[]>([]);
     const navigate = useNavigate();
     const [searchTerm, SetSearchTerm] = useState<string>("");

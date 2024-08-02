@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { MovieDto } from '../../models/movieDto';
 import apiConnector from '../../api/apiConnector';
-import axios from 'axios';
 
 
-interface Props {
-    movie?: MovieDto;
-}
 
-function MovieDetails({ movie }: Props) {
+
+function MovieDetails() {
     const [movies, setMovies] = useState<MovieDto>();
     const { id } = useParams();
 

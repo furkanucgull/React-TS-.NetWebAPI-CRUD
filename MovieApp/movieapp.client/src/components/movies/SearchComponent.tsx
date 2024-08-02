@@ -15,6 +15,7 @@ const SearchComponent: React.FC<Props> = ({ onSearch }) => {
         const term = e.target.value;
         SetSearchTerm(term);
         onSearch(term);
+        console.log(searchTerm);
     };
     return (
         <div className='flex justify-center items-center gap-3'>

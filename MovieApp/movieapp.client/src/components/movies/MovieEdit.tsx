@@ -4,11 +4,9 @@ import { TextField } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
 import apiConnector from '../../api/apiConnector';
 
-interface Props {
-    movie?: MovieDto;
-}
 
-const MovieEdit = ({ movie }: Props) => {
+
+const MovieEdit = () => {
     const { id } = useParams();
     const [oldMovie, SetOldMovie] = useState<MovieDto>();
     const navigate = useNavigate();
@@ -17,9 +15,10 @@ const MovieEdit = ({ movie }: Props) => {
         category: "",
         description: "",
         createDate: "",
+        imageUrl: ""
     });
 
-    const handleInput = (e) => {
+    const handleInput = (e: { target: { name: string; value: string; }; }) => {
         SetPost({ ...post, [e.target.name]: e.target.value });
     };
 
@@ -49,6 +48,7 @@ const MovieEdit = ({ movie }: Props) => {
                     category: oldData?.category || "",
                     description: oldData?.description || "",
                     createDate: oldData?.createDate || "",
+                    imageUrl: oldData?.imageUrl || ""
                 });
                 console.log(oldData);
             };

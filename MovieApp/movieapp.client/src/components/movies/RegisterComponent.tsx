@@ -1,8 +1,6 @@
-import React from 'react';
 
-type Props = {};
 
-const RegisterComponent = (props: Props) => {
+const RegisterComponent = () => {
     return (
         <div>
             <div className="h-screen md:flex">

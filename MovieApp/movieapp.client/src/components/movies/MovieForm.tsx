@@ -1,5 +1,4 @@
 import { TextField } from "@mui/material";
-import MUISelect from "./MUISelect";
 import { useState } from "react";
 import apiConnector from "../../api/apiConnector";
 import { useNavigate } from "react-router-dom";
@@ -12,8 +11,9 @@ export default function MovieForm() {
         category: " ",
         description: "",
         createDate: "",
+        imageUrl: ""
     });
-    const handleInput = (e) => {
+    const handleInput = (e: { target: { name: string; value: string; }; }) => {
         SetPost({ ...post, [e.target.name]: e.target.value });
     };
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

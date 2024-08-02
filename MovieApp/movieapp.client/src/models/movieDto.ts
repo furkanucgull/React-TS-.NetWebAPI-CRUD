@@ -1,5 +1,5 @@
 export interface MovieDto {
-  id?: number | string;
+  id?: any;
   title: string;
   description: string;
   createDate: string | undefined;

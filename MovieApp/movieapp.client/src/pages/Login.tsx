@@ -1,9 +1,8 @@
-import React from 'react';
+
 import LoginForm from '../components/movies/LoginForm';
 
-type Props = {};
 
-const Login = (props: Props) => {
+const Login = () => {
     return (
         <LoginForm />
     );
